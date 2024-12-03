@@ -46,7 +46,7 @@ def test_form():
 
             # Загрузка файла
             print("Загружаем файл...")
-            path_to_picture = os.path.abspath("pictures/cat.jpg")
+            path_to_picture = os.path.abspath("../pictures/cat.jpg")
             page.set_input_files("#uploadPicture", path_to_picture)
 
             # Текущий адрес
@@ -66,7 +66,7 @@ def test_form():
 
             # Скриншот результата
             print("Делаем скриншот результата...")
-            os.makedirs("screens", exist_ok=True)  # Убедимся, что папка существует.
+            os.makedirs("../screens", exist_ok=True)  # Убедимся, что папка существует.
             time_mark = time.strftime("%Y-%m-%d_%H-%M-%S")
             name_screen = f'Screenshot_{time_mark}.png'
             path_to_file = os.path.abspath(f"screens/{name_screen}")
