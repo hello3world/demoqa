@@ -62,7 +62,7 @@ def test_form(driver):
     # Загружаем изображение, находя элемент загрузки файла по ID и отправляя ему путь к файлу.
     import os  # Импортируем модуль os для получения абсолютного пути к файлу.
     picture = driver.find_element(By.ID, "uploadPicture")
-    path_to_picture = os.path.abspath("pictures/cat.jpg")  # Укажите правильный путь к изображению.
+    path_to_picture = os.path.abspath("../pictures/cat.jpg")  # Укажите правильный путь к изображению.
     picture.send_keys(path_to_picture)
 
     # Находим поле ввода "Текущий адрес" по его ID и вводим значение.
