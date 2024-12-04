@@ -20,7 +20,7 @@ This project provides comprehensive test automation for the Demoqa.com website u
 
 1. **Clone the Repository**
 ```powershell
-git https://github.com/hello3world/demoqa.git
+git clone https://github.com/hello3world/demoqa.git
 cd demoqa
 ```
 
