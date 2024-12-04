@@ -1,7 +1,7 @@
 
 # 1. Test Text Box
-def test_text_box(browser):
-    page = browser
+def test_text_box(page):
+    page = page
     page.goto('https://demoqa.com/text-box')
     page.locator('#userName').fill('Ivan Petrov')
     page.locator('#userEmail').fill('ivan_petrov@gmail.com')

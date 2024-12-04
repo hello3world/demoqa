@@ -1,5 +1,5 @@
-def test_radio_button(browser):
-    page = browser
+def test_radio_button(page):
+    page = page
     page.goto('https://demoqa.com/radio-button')
 
     # Select "Yes"

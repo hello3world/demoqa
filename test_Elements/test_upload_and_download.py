@@ -1,25 +1,25 @@
-def test_(browser):
-    page = browser
-    page.goto('https://demoqa.com/radio-button')
+import os  # Импортируем модуль os для работы с файлами.
+def test_(page):
+    page = page
+    page.goto('https://demoqa.com/upload-download')
 
-    # Select "Yes"
-    # page.click("label[for='yesRadio']")
-    # assert page.text_content(".mt-3 > .text-success") == "Yes"
+    # download file
+    def test_file_download(page):
+        page = page
+        page.goto('https://demoqa.com/upload-download')
+        with page.expect_download() as download_info:
+            page.click("#downloadButton")  # Replace with your selector
+        download = download_info.value
 
-    # Select "Impressive"
-    page.click("label[for='impressiveRadio']")
-    assert page.text_content(".mt-3 > .text-success") == "Impressive"
+        # Save the downloaded file to a specific location
+        download_path = download.path()
+        print(f"Downloaded file path: {download_path}")
 
-    # Select "No"
-    try:
-        page.click('label[for="noRadio"]')
-        assert page.text_content(".mt-3 > .text-success") == "No"
-    except Exception as error:
-        print("Error exception = ", error)
+        # Optional: Save file to a desired location
+        download.save_as("downloads/my_file.txt")
 
-    no_radio_button = page.locator('label[for="noRadio"]')
-    if no_radio_button.is_enabled():
-        no_radio_button.click()
-        assert page.text_content(".mt-3") == "You have selected No"
-    else:
-        print("The 'No' radio button is disabled and cannot be selected.")
+
+    # upload file
+    def test_file_upload(page):
+        path_to_picture = os.path.abspath("../pictures/cat.jpg")
+        page.set_input_files("#uploadFile", path_to_picture)
