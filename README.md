@@ -20,8 +20,8 @@ This project provides comprehensive test automation for the Demoqa.com website u
 
 1. **Clone the Repository**
 ```powershell
-git clone https://github.com/yourusername/demoqa-test-automation.git
-cd demoqa-test-automation
+git https://github.com/hello3world/demoqa.git
+cd demoqa
 ```
 
 2. **Create Virtual Environment**
@@ -69,21 +69,13 @@ pytest -v -s test_box.py::test_specific_scenario
 pytest -v -s test_box.py --html=report.html
 ```
 
-#### Generating Allure Reports
-```powershell
-pytest --alluredir=allure-results
-allure serve allure-results
-```
-
 ## 📊 Test Coverage
 
 ### Current Test Scenarios
 - [ ] Text Box Interactions
 - [ ] Checkbox Validations
 - [ ] Radio Button Selections
-- [ ] Web Table Operations
 - [ ] Button Clicks and Interactions
-- [ ] Links and Dynamic Content
 
 ## 🔒 Best Practices
 - Follow PEP 8 coding standards
@@ -98,4 +90,4 @@ allure serve allure-results
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-Project Link: [https://github.com/yourusername/demoqa-test-automation](https://github.com/yourusername/demoqa-test-automation)
+Project Link: [https://github.com/hello3world/demoqa](https://github.com/hello3world/demoqa)
