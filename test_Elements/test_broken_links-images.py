@@ -1,8 +1,8 @@
 import requests
 
 
-def test_broken_images(browser):
-    page = browser
+def test_broken_images(page):
+    page = page
     page.goto("https://demoqa.com/broken")
 
     # Locate all images
@@ -22,8 +22,8 @@ def test_broken_images(browser):
                 assert False, f"Error fetching image {img_url}: {e}"
 
 
-def test_broken_links(browser):
-    page = browser
+def test_broken_links(page):
+    page = page
     page.goto("https://demoqa.com/broken")
 
     # Locate all links

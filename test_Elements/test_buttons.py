@@ -1,5 +1,5 @@
-def test_buttons(browser):
-    page = browser
+def test_buttons(page):
+    page = page
     page.goto('https://demoqa.com/buttons')
 
     # Double click button

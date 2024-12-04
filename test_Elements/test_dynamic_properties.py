@@ -1,5 +1,5 @@
-def test_dynamic_properties(browser):
-    page = browser
+def test_dynamic_properties(page):
+    page = page
     page.goto('https://demoqa.com/radio-button')
 
     # Select "Yes"

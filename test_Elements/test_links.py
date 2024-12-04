@@ -1,5 +1,5 @@
-def test_links(browser):
-    page = browser
+def test_links(page):
+    page = page
     page.goto('https://demoqa.com/radio-button')
     page.click("text=Links")
     page.click("#simpleLink")  # Click on the "Home" link

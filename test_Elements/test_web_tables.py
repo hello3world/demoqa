@@ -1,5 +1,5 @@
-def test_web_table_add_and_search(browser):
-    page = browser
+def test_web_table_add_and_search(page):
+    page = page
     page.goto('https://demoqa.com/webtables')
 
     # Verify the presence of the "Add" button
