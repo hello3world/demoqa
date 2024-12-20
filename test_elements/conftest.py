@@ -1,18 +1,18 @@
 # Import pytest to work with fixture
 import pytest
 # Import Playwright for browser automation
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Playwright, sync_playwright, expect
 
 @pytest.fixture(scope='function')
 def page():
     # Initialize Playwright in synchronous mode and create a context to
     # interact with the browser
-    with sync_playwright() as p:
+    with sync_playwright() as playwright:
         # The following three lines are responsible for launching the browser
         # and creating a context within it
-        # Launch Chrome browser headless = False launches the browser in
+        # Launch Chrome browser headless = True launches the browser without
         # graphical mode
-        browser = p.chromium.launch(headless=False)
+        browser = playwright.chromium.launch(headless=True)
         # Create an isolated browser session
         context = browser.new_context()
         # Opens a new page (tab) in the browser
