@@ -1,4 +1,41 @@
-.idea/
-/venv/
-/assets/
-/report.html
+# 📂 Ignore virtual environment  
+venv/  
+.env  
+*.pyc  
+__pycache__/  
+*.pyo  
+*.pyd  
+*.pdb  
+
+# 📂 Logs and reports  
+logs/  
+*.log  
+report.html  
+allure-results/  
+allure-report/  
+*.xml  
+*.json  
+
+# 📂 IDE and editor settings  
+.idea/  # PyCharm  
+.vscode/  # VS Code  
+.DS_Store  # macOS system files  
+Thumbs.db  # Windows system files  
+
+# 📂 Cache and temporary files  
+.cache/  
+.tox/  
+*.swp  
+*.swo
+__pycache__
+.pytest_cache/  
+
+# 📂 Playwright browsers (if used)  
+playwright/.cache/  
+
+# 📂 Test data files (if using CSV, Excel, etc.)  
+data/*.csv  
+data/*.xlsx  
+assets/style.css
+test_elements/download/sampleFile.jpeg
+.idea/project_demoqa.iml

@@ -20,7 +20,7 @@ This project provides comprehensive test automation for the Demoqa.com website u
 
 1. **Clone the Repository**
 ```powershell
-git clone https://github.com/hello3world/demoqa.git
+git clone https://github.com/hello3world/demoqa.g it
 cd demoqa
 ```
 
@@ -28,8 +28,9 @@ cd demoqa
 
 #### Windows:
 ```powershell
-python -m venv venv
-venv\scripts\activate
+<<<<<<< HEAD
+python -m venv .venv
+.venv\scripts\activate
 ```
 
 #### macOS and Linux:
