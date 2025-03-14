@@ -28,6 +28,7 @@ cd demoqa
 
 #### Windows:
 ```powershell
+<<<<<<< HEAD
 python -m venv .venv
 .venv\scripts\activate
 ```
