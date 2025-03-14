@@ -24,4 +24,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Playwright tests
-        run: pytest path/to/test_text_box.py
+        run: pytest test_elements/test_text_box.py
