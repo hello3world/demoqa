@@ -12,7 +12,7 @@ def page():
         # and creating a context within it
         # Launch Chrome browser headless = True launches the browser without
         # graphical mode
-        browser = playwright.chromium.launch(headless=True)
+        browser = playwright.chromium.launch(headless=False)
         # Create an isolated browser session
         context = browser.new_context()
         # Opens a new page (tab) in the browser
