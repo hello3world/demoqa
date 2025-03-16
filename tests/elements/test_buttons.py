@@ -1,7 +1,7 @@
 import logging
-from pages.home_page import HomePage
-from pages.elements_page import ElementsPage
-from pages.buttons_page import ButtonPage
+from pages.elements.home_page import HomePage
+from pages.elements.elements_page import ElementsPage
+from pages.elements.buttons_page import ButtonPage
 
 def test_buttons(page):
     logging.info("Navigating to the home page")

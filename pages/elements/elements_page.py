@@ -17,3 +17,6 @@ class ElementsPage(BasePage):
     
     def click_radio_buttons(self):
         self.page.get_by_text("Radio Button").click()
+
+    def click_upload_and_download(self):
+        self.page.get_by_text("Upload and Download").click()

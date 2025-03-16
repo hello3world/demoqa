@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from ..base_page import BasePage
 
 class RadioButtonPage(BasePage):
     def __init__(self, page):

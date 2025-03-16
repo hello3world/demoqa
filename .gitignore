@@ -39,3 +39,6 @@ data/*.xlsx
 assets/style.css
 test_elements/download/sampleFile.jpeg
 .idea/project_demoqa.iml
+
+# 📂 AI Token
+.env

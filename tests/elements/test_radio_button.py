@@ -1,7 +1,7 @@
 import logging
-from pages.radio_button_page import RadioButtonPage
-from pages.home_page import HomePage
-from pages.elements_page import ElementsPage
+from pages.elements.radio_button_page import RadioButtonPage
+from pages.elements.home_page import HomePage
+from pages.elements.elements_page import ElementsPage
 
 def test_radio_button(page):
     logging.info("Navigating to the home page")
