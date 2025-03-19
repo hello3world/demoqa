@@ -40,4 +40,7 @@ jobs:
 
       - name: Run Playwright tests
         run: |
+          pytest tests/elements/test_buttons.py
+          pytest tests/elements/test_text_box.py
+          pytest tests/elements/test_upload_and_download.py
           pytest tests/elements/test_links_api.py
