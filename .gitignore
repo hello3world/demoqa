@@ -42,3 +42,5 @@ test_elements/download/sampleFile.jpeg
 
 # 📂 AI Token
 .env
+
+pytest.ini

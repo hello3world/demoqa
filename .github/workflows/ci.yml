@@ -40,4 +40,4 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          pytest test/elements/test_links_api.py
+          pytest tests/elements/test_links_api.py
