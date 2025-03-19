@@ -3,7 +3,10 @@ name: CI Pipeline
 on:
   pull_request:
     branches:
-      - main
+      - development
+  push:
+    branches:
+      - development
 
 jobs:
   test:
@@ -32,4 +35,4 @@ jobs:
       - name: Run Playwright tests
         run: |
           pytest test/elements/test_links_api.py
-          
+
