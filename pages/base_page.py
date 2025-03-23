@@ -14,5 +14,9 @@ class BasePage:
 
     def take_screenshot_on_error(self, error_message: str):
         screenshot_path = f"assets/screenshots/error_{int(time.time())}.png"
-        self.page.screenshot(path=screenshot_path)
+        self.page.screenshot(
+            path=screenshot_path,
+            timeout=60000,  # Increase timeout to 60 seconds
+            animations="disabled"  # Disable animations
+        )
         logging.error(f"{error_message}. Screenshot saved at {screenshot_path}")

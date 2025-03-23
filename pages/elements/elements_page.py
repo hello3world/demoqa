@@ -20,3 +20,6 @@ class ElementsPage(BasePage):
 
     def click_upload_and_download(self):
         self.page.get_by_text("Upload and Download").click()
+
+    def click_dynamic_properties(self):
+        self.page.get_by_text("Dynamic Properties").click()
