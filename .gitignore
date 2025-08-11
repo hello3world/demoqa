@@ -1,46 +1,75 @@
-# 📂 Ignore virtual environment  
-venv/  
-.env  
-*.pyc  
-__pycache__/  
-*.pyo  
-*.pyd  
-*.pdb  
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# 📂 Logs and reports  
-logs/  
-*.log  
-report.html  
-allure-results/  
-allure-report/  
-*.xml  
-*.json  
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# 📂 IDE and editor settings  
-.idea/  # PyCharm  
-.vscode/  # VS Code  
-.DS_Store  # macOS system files  
-Thumbs.db  # Windows system files  
-
-# 📂 Cache and temporary files  
-.cache/  
-.tox/  
-*.swp  
+# IDE
+.vscode/
+.idea/
+*.swp
 *.swo
-__pycache__
-.pytest_cache/  
+*~
 
-# 📂 Playwright browsers (if used)  
-playwright/.cache/  
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
 
-# 📂 Test data files (if using CSV, Excel, etc.)  
-data/*.csv  
-data/*.xlsx  
-assets/style.css
-test_elements/download/sampleFile.jpeg
-.idea/project_demoqa.iml
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
 
-# 📂 AI Token
+# Screenshots and logs
+screenshots/
+*.log
+*.png
+*.jpg
+*.jpeg
+
+# Allure
+allure-results/
+allure-report/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
 .env
-
-pytest.ini
+TRANSLATION_SUMMARY.md
+project_structure.md
