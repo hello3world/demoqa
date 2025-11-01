@@ -1,7 +1,7 @@
 import logging
-from pages.elements.text_box_page import TextBoxPage
-from pages.elements.home_page import HomePage
-from pages.elements.elements_page import ElementsPage
+from pages.text_box_page import TextBoxPage
+from pages.home_page import HomePage
+from pages.elements_page import ElementsPage
 
 def test_text_box(page):
     try:
@@ -27,6 +27,7 @@ def test_text_box(page):
         assert 'Minsk City, Main Street, 1-1' in page.locator('p#currentAddress').text_content()
         assert 'Minsk City, Secondary Street, 1-2' in page.locator('p#permanentAddress').text_content()
     except Exception as e:
+        logging.error(f"Error in test_text_box: {e}")
         base_page = TextBoxPage(page)
-        base_page.take_screenshot_on_error(f"Error in test_text_box: {e}")
+        base_page.take_screenshot_on_error()
         raise
