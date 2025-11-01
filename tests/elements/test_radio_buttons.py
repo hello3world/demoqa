@@ -1,7 +1,8 @@
 import logging
-from pages.elements.radio_button_page import RadioButtonPage
-from pages.elements.home_page import HomePage
-from pages.elements.elements_page import ElementsPage
+from pages.radio_button_page import RadioButtonPage
+from pages.home_page import HomePage
+from pages.elements_page import ElementsPage
+from playwright.sync_api import expect
 
 def test_radio_button(page):
     try:
@@ -21,22 +22,17 @@ def test_radio_button(page):
 
         logging.info("Selecting 'Yes'")
         radio_button_page.select_yes()
+        expect(page.locator(".text-success")).to_have_text("Yes")
 
         logging.info("Selecting 'Impressive'")
         radio_button_page.select_impressive()
+        expect(page.locator(".text-success")).to_have_text("Impressive")
 
         logging.info("Selecting 'No'")
-        try:
-            radio_button_page.select_no()
-        except Exception as error:
-            logging.error(f"Error exception = {error}")
-            no_radio_button = page.locator('label[for="noRadio"]')
-            if no_radio_button.is_enabled():
-                no_radio_button.click()
-                assert page.text_content(".mt-3") == "You have selected No"
-            else:
-                logging.info("The 'No' radio button is disabled and cannot be selected.")
+        radio_button_page.no_option_is_disabled()
+
     except Exception as e:
+        logging.error(f"Error in test_radio_button: {e}")
         base_page = RadioButtonPage(page)
-        base_page.take_screenshot_on_error(f"Error in test_radio_button: {e}")
+        base_page.take_screenshot_on_error()
         raise
