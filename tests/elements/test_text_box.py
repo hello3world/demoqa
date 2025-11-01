@@ -1,7 +1,7 @@
 import logging
 from pages.text_box_page import TextBoxPage
 from pages.home_page import HomePage
-from pages.elements_page import ElementsPage
+from pages.elements.elements_page import ElementsPage
 
 def test_text_box(page):
     try:

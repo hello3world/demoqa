@@ -1,7 +1,7 @@
 import logging
-from pages.radio_button_page import RadioButtonPage
+from pages.elements.radio_button_page import RadioButtonPage
 from pages.home_page import HomePage
-from pages.elements_page import ElementsPage
+from pages.elements.elements_page import ElementsPage
 from playwright.sync_api import expect
 
 def test_radio_button(page):

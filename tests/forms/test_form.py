@@ -1,19 +1,25 @@
 import os
-import time
+from typing import Dict
+import logging
 import json
-from playwright.sync_api import sync_playwright
-from pages.forms.practice_form_page import PracticeFormPage
+from pages.forms.form_page import FormPage
+from pages.home_page import HomePage
 
 def test_form(page):
     try:
-        page.goto("https://demoqa.com/automation-practice-form")
+        home_page = HomePage(page)
+        home_page.open("https://demoqa.com/")
+        home_page.page_verify()
+        home_page.open_forms_button()
+
+        form_page = FormPage(page)
+        form_page.page_verify()
         
         # Load test data from JSON file
-        with open(os.path.abspath("tests/forms/test_data.json"), "r", encoding="utf-8") as file:
+        with open(os.path.abspath("tests/forms/assets/data/test_data.json"), "r", encoding="utf-8") as file:
             data = json.load(file)
         data["picture_path"] = os.path.abspath(data["picture_path"])  # Resolve picture path
 
-        form_page = PracticeFormPage(page)
         form_page.fill_form(data)
         form_page.submit_form()
 
@@ -32,12 +38,8 @@ def test_form(page):
         assert modal_data["Address"] == data["address"]
         assert modal_data["State and City"] == f"{data['state']} {data['city']}"
 
-        os.makedirs("assets/screenshots", exist_ok=True)
-        time_mark = time.strftime("%Y-%m-%d_%H-%M-%S")
-        screenshot_path = os.path.abspath(f"assets/screenshots/screenshot_form_OK_{time_mark}.png")
-        page.screenshot(path=screenshot_path)
-        
-        
     except Exception as e:
-        form_page.take_screenshot_on_error(f"Error in test_form: {e}")  
+        logging.error("Error in test_form: {e}")
+        form_page = FormPage(page)
+        form_page.take_screenshot_on_error()  
         raise

@@ -11,8 +11,9 @@ class HomePage(BasePage):
     def click_elements_button(self):
         self.page.get_by_text("Elements").click()
 
-    def click_forms_button(self):
+    def open_forms_button(self):
         self.page.get_by_text("Forms").click()
+        self.page.get_by_text("Practice Form").click()
 
     def click_alerts_button(self):
         self.page.get_by_text("Alerts, Frame & Windows").click()

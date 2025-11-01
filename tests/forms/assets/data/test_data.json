@@ -2,11 +2,12 @@
     "first_name": "John",
     "last_name": "Doe",
     "email": "john.doe@example.com",
+    "gender": "Male",
     "mobile": "1234567890",
     "dob_month": "March",
     "dob_year": "1998",
     "subject": "History",
-    "picture_path": "assets/pictures/cat.jpg",
+    "picture_path": "tests/forms/assets/data/test_data.json",
     "address": "123 Main Street, Springfield",
     "state": "Uttar Pradesh",
     "city": "Agra"

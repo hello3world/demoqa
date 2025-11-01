@@ -27,6 +27,7 @@ env/
 ENV/
 env.bak/
 venv.bak/
+.venv/
 
 # IDE
 .vscode/
@@ -73,3 +74,7 @@ desktop.ini
 .env
 TRANSLATION_SUMMARY.md
 project_structure.md
+.windsurf/rules/aqa-senior.md
+
+videos/
+screenshots/
