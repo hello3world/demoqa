@@ -8,10 +8,10 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+# Reuse shared fixtures from tests._fixtures to avoid duplicate Playwright startup
+from tests._fixtures import page as _page_fixture
+
+
 @pytest.fixture
-def page():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=500)
-        page = browser.new_page()
-        yield page
-        browser.close()
+def page(_page_fixture):  # type: ignore[override]
+    return _page_fixture

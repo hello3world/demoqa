@@ -1,46 +1,50 @@
-from playwright.sync_api import expect
+from __future__ import annotations
+import os
 import time
-from config import SCREENSHOT_DIR, BROWSER_TIMEOUT, SCREENSHOT_TIMEOUT
-from logger_config import logger
+from pathlib import Path
+from typing import Optional, Union
+
+from playwright.sync_api import Page, Locator, expect
+
 
 class BasePage:
-    def __init__(self, page):
+    def __init__(self, page: Page) -> None:
         self.page = page
 
-    def open(self, url):
-        """Opens the specified URL"""
-        logger.info(f"Opening URL: {url}")
-        self.page.goto(url)
+    def open(self, url: str, wait_until: str = "domcontentloaded") -> None:
+        self.page.goto(url, wait_until=wait_until)
 
-    def page_verify(self, locator):
-        """Verifies element visibility on the page"""
-        logger.debug(f"Checking element visibility: {locator}")
-        expect(self.page.locator(locator)).to_be_visible(timeout=BROWSER_TIMEOUT)
+    def wait_for_url(
+        self, url_or_pattern: Union[str, re.Pattern], timeout: int = 10000
+    ) -> None:
+        self.page.wait_for_url(url_or_pattern, timeout=timeout)
 
-    def take_screenshot_on_error(self, error_message: str):
-        """Takes a screenshot on error"""
-        screenshot_path = f"{SCREENSHOT_DIR}/error_{int(time.time())}.png"
-        self.page.screenshot(
-            path=screenshot_path,
-            timeout=SCREENSHOT_TIMEOUT,
-            animations="disabled"
-        )
-        logger.error(f"{error_message}. Screenshot saved at {screenshot_path}")
+    def expect_visible(
+        self, target: Union[str, Locator], timeout: int = 10000
+    ) -> Locator:
+        locator = self.page.locator(target) if isinstance(target, str) else target
+        expect(locator).to_be_visible(timeout=timeout)
+        return locator
 
-    def wait_for_element(self, locator, timeout=None):
-        """Waits for element to appear"""
-        timeout = timeout or BROWSER_TIMEOUT
-        logger.debug(f"Waiting for element: {locator}, timeout: {timeout}")
-        return self.page.locator(locator).wait_for(timeout=timeout)
+    def expect_hidden(
+        self, target: Union[str, Locator], timeout: int = 10000
+    ) -> Locator:
+        locator = self.page.locator(target) if isinstance(target, str) else target
+        expect(locator).to_be_hidden(timeout=timeout)
+        return locator
 
-    def click_element(self, locator):
-        """Clicks on element with waiting"""
-        logger.debug(f"Clicking on element: {locator}")
-        element = self.wait_for_element(locator)
-        element.click()
+    def get_by_test_id(self, test_id: str) -> Locator:
+        return self.page.get_by_test_id(test_id)
 
-    def fill_input(self, locator, text):
-        """Fills input field"""
-        logger.debug(f"Filling field {locator} with text: {text}")
-        element = self.wait_for_element(locator)
-        element.fill(text)
+    def screenshot(self, path: Optional[str] = None, full_page: bool = True) -> str:
+        if path is None:
+            ts = time.strftime("%Y%m%d_%H%M%S")
+            path = f"screenshots/{ts}.png"
+        Path(os.path.dirname(path) or ".").mkdir(parents=True, exist_ok=True)
+        self.page.screenshot(path=path, full_page=full_page)
+        return path
+
+    def take_screenshot_on_error(self, message: str = "") -> str:
+        ts = time.strftime("%Y%m%d_%H%M%S")
+        filename = f"screenshots/{ts}.png"
+        return self.screenshot(filename, full_page=True)
