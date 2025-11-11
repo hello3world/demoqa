@@ -1,5 +1,5 @@
 import logging
-from pages.text_box_page import TextBoxPage
+from pages.elements.text_box_page import TextBoxPage
 from pages.home_page import HomePage
 from pages.elements.elements_page import ElementsPage
 
