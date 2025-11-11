@@ -1,7 +1,8 @@
 import logging
-from pages.elements.home_page import HomePage
+from pages.home_page import HomePage
 from pages.elements.elements_page import ElementsPage
 from pages.elements.buttons_page import ButtonPage
+
 
 def navigate_to_buttons(page):
     logging.info("Navigating to the home page")
@@ -19,6 +20,7 @@ def navigate_to_buttons(page):
     buttons_page.page_verify()
     return buttons_page
 
+
 def test_single_click_button(page):
     try:
         buttons_page = navigate_to_buttons(page)
@@ -28,6 +30,7 @@ def test_single_click_button(page):
         buttons_page.take_screenshot_on_error(f"Error in test_single_click_button: {e}")
         raise
 
+
 def test_double_click_button(page):
     try:
         buttons_page = navigate_to_buttons(page)
@@ -36,6 +39,7 @@ def test_double_click_button(page):
     except Exception as e:
         buttons_page.take_screenshot_on_error(f"Error in test_double_click_button: {e}")
         raise
+
 
 def test_right_click_button(page):
     try:

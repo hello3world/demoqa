@@ -2,8 +2,8 @@ import logging
 import allure
 from playwright.sync_api import expect
 from pages.home_page import HomePage
-from pages.elements_page import ElementsPage
-from pages.check_box_page import CheckBoxPage
+from pages.elements.elements_page import ElementsPage
+from pages.elements.check_box_page import CheckBoxPage
 
 @allure.title("Check Box: selecting Desktop, Documents, Downloads shows in result")
 @allure.severity(allure.severity_level.NORMAL)
