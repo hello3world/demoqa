@@ -26,6 +26,8 @@ def main():
                        help='Run with visible browser')
     parser.add_argument('--allure', action='store_true', 
                        help='Generate Allure report')
+    parser.add_argument('--pw-browser', choices=['chromium', 'firefox', 'webkit'],
+                       default=None, help='Select browser for execution')
     
     args = parser.parse_args()
     
@@ -37,6 +39,9 @@ def main():
     
     if args.allure:
         pytest_options.append('--alluredir=allure-results')
+
+    if args.pw_browser:
+        pytest_options.append(f'--pw-browser={args.pw_browser}')
     
     # Determine test path
     if args.category == 'all':

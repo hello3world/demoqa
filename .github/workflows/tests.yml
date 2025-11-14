@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Try repo requirements first
+          if [ -f requirements.txt ]; then pip install -r requirements.txt || true; fi
+          # Ensure required test deps are present
+          pip install playwright pytest allure-pytest pytest-xdist
+          python -m playwright install --with-deps
+
+      - name: Run tests
+        env:
+          HEADLESS: 'true'
+        run: |
+          pytest -v --pw-browser=${{ matrix.browser }} --alluredir=allure-results
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.browser }}
+          path: allure-results
+          if-no-files-found: warn

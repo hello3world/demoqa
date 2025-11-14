@@ -10,7 +10,7 @@ SCREENSHOT_TIMEOUT = 60000
 
 # Browser settings
 BROWSER_CONFIG = {
-    "headless": False,
+    "headless": os.getenv("HEADLESS", "true").lower() == "true",
     "args": [
         "--no-sandbox",
         "--disable-dev-shm-usage",
@@ -31,4 +31,4 @@ ALLURE_RESULTS_DIR = "allure-results"
 
 # Create directories on import
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
-os.makedirs(ALLURE_RESULTS_DIR, exist_ok=True) 
+os.makedirs(ALLURE_RESULTS_DIR, exist_ok=True)
